@@ -13,10 +13,21 @@ public class GameManager : MonoBehaviour
 
     public Transform cameraPivot;
 
+    public List<Texture> horseTextures;
+    public List<Material> horseMaterials;
+    public Shader horseShader;
+
     void Start()
     {
         helecopterStartPoint = helecopter.transform.position;
         mask = LayerMask.GetMask("RaycastTarget");
+        horseMaterials = new List<Material>();
+        foreach(Texture horseTexture in horseTextures)
+        {
+            Material newHorseMaterial = new Material(horseShader);
+            newHorseMaterial.SetTexture("_Texture", horseTexture);
+            horseMaterials.Add(newHorseMaterial);
+        }
     }
 
     void Update()
@@ -33,8 +44,17 @@ public class GameManager : MonoBehaviour
         //spawn a horse when we click
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Click mouse");
-            Instantiate(horsePrefab, helecopter.position, Random.rotation);
+            Material horseMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
+            Material maineMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
+            Horse newHorse = Instantiate(horsePrefab, helecopter.position, Random.rotation).GetComponent<Horse>();
+            foreach(Renderer renderer in newHorse.bodyRenderers)
+            {
+                renderer.sharedMaterial = horseMaterial;
+            }
+            foreach(Renderer renderer in newHorse.maineRenderers)
+            {
+                renderer.sharedMaterial = maineMaterial;
+            }
         }
     }
 }

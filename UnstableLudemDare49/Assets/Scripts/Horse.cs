@@ -9,6 +9,9 @@ public class Horse : MonoBehaviour
 
     public float maxSpin = 1;
 
+    public List<Renderer> bodyRenderers;
+    public List<Renderer> maineRenderers;
+
     void Start()
     {
         rigidbody.angularVelocity = new Vector3(RandomSpin(),RandomSpin(),RandomSpin());
