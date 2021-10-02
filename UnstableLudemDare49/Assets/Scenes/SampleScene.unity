@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 438202440}
   - component: {fileID: 438202439}
   - component: {fileID: 438202438}
+  - component: {fileID: 438202442}
   m_Layer: 6
   m_Name: Helecopter
   m_TagString: Untagged
@@ -218,6 +219,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &438202442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438202437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fef2b340bbb8a4fb7a9e5a3d202e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraPivot: {fileID: 1795681973}
 --- !u!1 &560060467
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +567,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762271723}
   - component: {fileID: 1762271722}
+  - component: {fileID: 1762271724}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -572,9 +587,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec734a10280f69849af20802d74552ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helecopter: {fileID: 438202441}
+--- !u!4 &1762271723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762271721}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1762271724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762271721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72163d6d7aa5a0e47aed8f261fd2f35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   horsePrefab: {fileID: 8460756007377011145, guid: 0007ab5002a41c646a7b3df8327f852d, type: 3}
-  cameraPivot: {fileID: 1795681973}
   horseTextures:
   - {fileID: 2800000, guid: b093e2542b855e24c89e0c5dd3624228, type: 3}
   - {fileID: 2800000, guid: 1a640b53a9c7ad14b828422176e502c2, type: 3}
@@ -647,23 +686,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 958cf588b195659409576c0ff2ae570c, type: 3}
   - {fileID: 2800000, guid: 86b2dfd1f27b21346b214554265119a7, type: 3}
   - {fileID: 2800000, guid: d2565e1d8f63ece4ab037b54eeb6158d, type: 3}
-  horseMaterials: []
   horseMaterialCount: 50
   horseShader: {fileID: 4800000, guid: 70dace53ef276b843884fad561610231, type: 3}
---- !u!4 &1762271723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762271721}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  helecopter: {fileID: 438202441}
 --- !u!1 &1795681971
 GameObject:
   m_ObjectHideFlags: 0
