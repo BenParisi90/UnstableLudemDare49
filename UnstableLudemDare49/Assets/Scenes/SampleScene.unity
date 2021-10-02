@@ -483,10 +483,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 958cf588b195659409576c0ff2ae570c, type: 3}
   - {fileID: 2800000, guid: 86b2dfd1f27b21346b214554265119a7, type: 3}
   - {fileID: 2800000, guid: d2565e1d8f63ece4ab037b54eeb6158d, type: 3}
-  horseCount: 50
   horseShader: {fileID: 4800000, guid: 70dace53ef276b843884fad561610231, type: 3}
   horsePile: {fileID: 366658785}
-  horsePool: {fileID: 0}
+  horsePool: {fileID: 1051842740}
   horses: []
   maxHeightThisRound: 0
   currentPileHeight: 0
@@ -1160,7 +1159,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -1289,7 +1288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1051842740
 Transform:
   m_ObjectHideFlags: 0
