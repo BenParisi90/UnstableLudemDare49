@@ -12,6 +12,8 @@ public class Horse : MonoBehaviour
     public List<Renderer> bodyRenderers;
     public List<Renderer> maineRenderers;
 
+    float timeTillNotFresh = 1.2f;
+
     void Start()
     {
         rigidbody.angularVelocity = new Vector3(RandomSpin(),RandomSpin(),RandomSpin());

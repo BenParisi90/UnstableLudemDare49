@@ -5,12 +5,14 @@ using UnityEngine;
 public class HorseDropper : MonoBehaviour
 {
     public GameObject horsePrefab;
-
     public List<Texture> horseTextures;
     List<Material> horseMaterials;
     public int horseMaterialCount = 50;
     public Shader horseShader;
-    public Transform helecopter;
+    public Transform horsePile;
+
+    public List<Horse> horses;
+    
 
     void Start()
     {
@@ -31,7 +33,9 @@ public class HorseDropper : MonoBehaviour
         {
             Material horseMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
             Material maineMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
-            Horse newHorse = Instantiate(horsePrefab, helecopter.position, Random.rotation).GetComponent<Horse>();
+            Horse newHorse = Instantiate(horsePrefab, transform.position, Random.rotation, horsePile).GetComponent<Horse>();
+            horses.Add(newHorse);
+
             foreach(Renderer renderer in newHorse.bodyRenderers)
             {
                 renderer.sharedMaterial = horseMaterial;
@@ -41,5 +45,15 @@ public class HorseDropper : MonoBehaviour
                 renderer.sharedMaterial = maineMaterial;
             }
         }
+    }
+
+    public float PileHeight()
+    {
+        float pileHeight = 0;
+        foreach(Horse horse in horses)
+        {
+            pileHeight = Mathf.Max(pileHeight, horse.bodyRenderers[0].bounds.max.y);
+        }
+        return pileHeight;
     }
 }
