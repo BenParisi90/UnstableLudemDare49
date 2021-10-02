@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public List<Texture> horseTextures;
     public List<Material> horseMaterials;
+    public int horseMaterialCount = 50;
     public Shader horseShader;
 
     void Start()
@@ -22,10 +23,11 @@ public class GameManager : MonoBehaviour
         helecopterStartPoint = helecopter.transform.position;
         mask = LayerMask.GetMask("RaycastTarget");
         horseMaterials = new List<Material>();
-        foreach(Texture horseTexture in horseTextures)
+        for(int i = 0; i < horseMaterialCount; i ++)
         {
             Material newHorseMaterial = new Material(horseShader);
-            newHorseMaterial.SetTexture("_Texture", horseTexture);
+            newHorseMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
+            newHorseMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
             horseMaterials.Add(newHorseMaterial);
         }
     }
