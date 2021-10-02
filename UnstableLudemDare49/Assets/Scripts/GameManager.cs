@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    
+    [SerializeField] GameObject mainMenu;
     [SerializeField] HorseGameButton startGameButton;
-    public GameObject mainMenu;
+    [SerializeField] GameObject gameOverMenu;
+    [SerializeField] HorseGameButton restartGameButton;
     [SerializeField] GameObject introText;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
@@ -13,11 +16,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         startGameButton.clicked += StartGameClicked;
+        restartGameButton.clicked += RestartGameClicked;
+        mainMenu.SetActive(true);
+        gameOverMenu.SetActive(false);
+        introText.SetActive(false);
     }
 
     void OnDestroy()
     {
         startGameButton.clicked -= StartGameClicked;
+        restartGameButton.clicked -= RestartGameClicked;
     }
 
     void ResetGame()
@@ -31,11 +39,23 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DisplayIntroText());
     }
 
+    void RestartGameClicked()
+    {
+        gameOverMenu.SetActive(false);
+        StartCoroutine(DisplayIntroText());
+    }
+
     IEnumerator DisplayIntroText()
     {
         introText.SetActive(true);
         yield return new WaitForSeconds(introTextTime);
         introText.SetActive(false);
         horseDropper.canDrop = true;
+    }
+
+    public void EndGame()
+    {
+        horseDropper.canDrop = false;
+        gameOverMenu.SetActive(true);
     }
 }
