@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6885838941197396615}
   - component: {fileID: 1016521214913867627}
   - component: {fileID: 7344529296093583123}
-  - component: {fileID: 977539027547431422}
+  - component: {fileID: 415157084635000837}
   m_Layer: 7
   m_Name: Body (1)
   m_TagString: Untagged
@@ -82,19 +82,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &977539027547431422
-BoxCollider:
+--- !u!114 &415157084635000837
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34065803295122628}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &142971217784891181
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5690534750621672136}
   - component: {fileID: 7389242801865935838}
   - component: {fileID: 2602491347553245758}
-  - component: {fileID: 3867074860159777608}
+  - component: {fileID: 3647903641408230610}
   m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
@@ -177,19 +177,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3867074860159777608
-BoxCollider:
+--- !u!114 &3647903641408230610
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142971217784891181}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &964448890465924298
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7206688889123390250}
   - component: {fileID: 3801367950418986420}
   - component: {fileID: 6291691879062139070}
-  - component: {fileID: 7109484477496194418}
+  - component: {fileID: 2072412423792215998}
   m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
@@ -272,19 +272,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7109484477496194418
-BoxCollider:
+--- !u!114 &2072412423792215998
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 964448890465924298}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &1201909428496111496
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 2983451999662830402}
   - component: {fileID: 308498275235352285}
   - component: {fileID: 7927436653999606211}
-  - component: {fileID: 7606229783926941178}
+  - component: {fileID: 3074603667115826573}
   m_Layer: 7
   m_Name: Tail
   m_TagString: Untagged
@@ -367,19 +367,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7606229783926941178
-BoxCollider:
+--- !u!114 &3074603667115826573
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201909428496111496}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &4215554583658887812
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 2100391267302249918}
   - component: {fileID: 1647921264044788543}
   - component: {fileID: 3786838326961648047}
-  - component: {fileID: 8530810950273388700}
+  - component: {fileID: 2820490880951316540}
   m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
@@ -501,19 +501,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8530810950273388700
-BoxCollider:
+--- !u!114 &2820490880951316540
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6011934435124292832}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &6875069159451937095
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 4656105086910324345}
   - component: {fileID: 6369611235708778385}
   - component: {fileID: 8900882318730235472}
-  - component: {fileID: 2905915412626089615}
+  - component: {fileID: 7122157358196785366}
   m_Layer: 7
   m_Name: Body (2)
   m_TagString: Untagged
@@ -596,19 +596,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2905915412626089615
-BoxCollider:
+--- !u!114 &7122157358196785366
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6875069159451937095}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &7434796786199993060
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 4337248268988398696}
   - component: {fileID: 3296154624594909635}
   - component: {fileID: 7438293428311165061}
-  - component: {fileID: 5054419253007486209}
+  - component: {fileID: 6160882212750347686}
   m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
@@ -691,19 +691,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5054419253007486209
-BoxCollider:
+--- !u!114 &6160882212750347686
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7434796786199993060}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &7543349113442596058
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +715,7 @@ GameObject:
   - component: {fileID: 2058220930682172245}
   - component: {fileID: 56517364665731289}
   - component: {fileID: 8839573507040637534}
-  - component: {fileID: 271300066868532568}
+  - component: {fileID: 8892376649850155458}
   m_Layer: 7
   m_Name: Maine
   m_TagString: Untagged
@@ -786,19 +786,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &271300066868532568
-BoxCollider:
+--- !u!114 &8892376649850155458
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7543349113442596058}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &8411776303355802873
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 1889609481963418939}
   - component: {fileID: 6989984252089515137}
   - component: {fileID: 6366470707840111421}
-  - component: {fileID: 6853142069668431281}
+  - component: {fileID: 6120879197510984833}
   m_Layer: 7
   m_Name: Leg
   m_TagString: Untagged
@@ -881,19 +881,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6853142069668431281
-BoxCollider:
+--- !u!114 &6120879197510984833
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411776303355802873}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f99449926d12c145b45fc85e3536392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horse: {fileID: 98031063196931913}
 --- !u!1 &8460756007377011145
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +904,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3754520078482270219}
   - component: {fileID: 4630401120495410936}
+  - component: {fileID: 98031063196931913}
+  - component: {fileID: 3947981970301219583}
   m_Layer: 7
   m_Name: Horse
   m_TagString: Untagged
@@ -942,3 +944,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &98031063196931913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460756007377011145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ea5bce8c9389984ea66140e86cc27ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 4630401120495410936}
+--- !u!136 &3947981970301219583
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460756007377011145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.01
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.59, z: -0.33}
