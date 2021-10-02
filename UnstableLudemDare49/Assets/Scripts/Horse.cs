@@ -6,7 +6,7 @@ public class Horse : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public bool collected = false;
-    public bool hasCollided;
+    public bool touchedGround = false;
 
     public float maxSpin = 1;
 
@@ -14,6 +14,7 @@ public class Horse : MonoBehaviour
     public List<Renderer> maineRenderers;
 
     float timeTillNotFresh = 1.2f;
+    public Collider groundCollider;
 
     void Start()
     {
@@ -23,14 +24,17 @@ public class Horse : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision");
-        hasCollided = true;
         if(rigidbody == null)
         {
             return;
         }
         Debug.Log("Has Rigid body");
+        if(collision.other == groundCollider)
+        {
+            touchedGround = true;
+        }
         Horse otherHorse = collision.transform.GetComponent<Horse>();
-        if(otherHorse == null || collected)
+        if(otherHorse == null || !otherHorse.touchedGround)
         {
             return;
         }
@@ -38,6 +42,7 @@ public class Horse : MonoBehaviour
         Destroy(otherHorse.rigidbody);
         otherHorse.collected = true;
         otherHorse.transform.parent = transform;
+        touchedGround = true;
     }
 
     float RandomSpin()
@@ -51,5 +56,7 @@ public class Horse : MonoBehaviour
         {
             rigidbody = gameObject.AddComponent<Rigidbody>();
         }
+        collected = false;
+        touchedGround = false;
     }
 }

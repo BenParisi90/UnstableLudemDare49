@@ -16,6 +16,7 @@ public class HorseDropper : MonoBehaviour
 
     public float maxHeightThisRound = 0;
     public float currentPileHeight = 0;
+    [SerializeField] Collider groundCollider;
     
 
     void Start()
@@ -29,6 +30,7 @@ public class HorseDropper : MonoBehaviour
             maineMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
             maineMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
             Horse newHorse = Instantiate(horsePrefab, Vector3.zero, Quaternion.identity, horsePool).GetComponent<Horse>();
+            newHorse.groundCollider = groundCollider;
             horses.Add(newHorse);
 
             foreach(Renderer renderer in newHorse.bodyRenderers)
@@ -67,7 +69,7 @@ public class HorseDropper : MonoBehaviour
         float pileHeight = 0;
         foreach(Horse horse in horses)
         {
-            if(!horse.hasCollided)
+            if(!horse.touchedGround)
             {
                 continue;
             }
