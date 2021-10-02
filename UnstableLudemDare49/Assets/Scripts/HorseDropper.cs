@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HorseDropper : MonoBehaviour
 {
+    public bool canDrop = false;
     public GameObject horsePrefab;
     public List<Texture> horseTextures;
     List<Material> horseMaterials;
@@ -28,6 +29,10 @@ public class HorseDropper : MonoBehaviour
 
     void Update()
     {
+        if(!canDrop)
+        {
+            return;
+        }
         //spawn a horse when we click
         if(Input.GetMouseButtonDown(0))
         {
