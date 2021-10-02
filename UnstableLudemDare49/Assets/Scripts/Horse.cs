@@ -24,7 +24,7 @@ public class Horse : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision");
-        if(rigidbody == null)
+        if(rigidbody == null || collected)
         {
             return;
         }
