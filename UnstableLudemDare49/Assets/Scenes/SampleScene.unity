@@ -483,9 +483,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 958cf588b195659409576c0ff2ae570c, type: 3}
   - {fileID: 2800000, guid: 86b2dfd1f27b21346b214554265119a7, type: 3}
   - {fileID: 2800000, guid: d2565e1d8f63ece4ab037b54eeb6158d, type: 3}
-  horseMaterialCount: 50
+  horseCount: 50
   horseShader: {fileID: 4800000, guid: 70dace53ef276b843884fad561610231, type: 3}
   horsePile: {fileID: 366658785}
+  horsePool: {fileID: 0}
   horses: []
   maxHeightThisRound: 0
   currentPileHeight: 0
@@ -1272,6 +1273,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1051842739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1051842740}
+  m_Layer: 0
+  m_Name: HorsePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1051842740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051842739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176649535
 GameObject:

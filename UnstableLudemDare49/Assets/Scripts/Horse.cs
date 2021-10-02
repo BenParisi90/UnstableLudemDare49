@@ -44,4 +44,12 @@ public class Horse : MonoBehaviour
     {
         return Random.RandomRange(-maxSpin,maxSpin);
     }
+
+    public void ResetProperties()
+    {
+        if(rigidbody == null)
+        {
+            rigidbody = gameObject.AddComponent<Rigidbody>();
+        }
+    }
 }

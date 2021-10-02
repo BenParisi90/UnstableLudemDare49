@@ -6,10 +6,11 @@ public class HorseDropper : MonoBehaviour
 {
     public GameObject horsePrefab;
     public List<Texture> horseTextures;
-    List<Material> horseMaterials;
-    public int horseMaterialCount = 50;
+    //List<Material> horseMaterials;
+    int horseCount = 1000;
     public Shader horseShader;
     public Transform horsePile;
+    public Transform horsePool;
 
     public List<Horse> horses;
 
@@ -19,13 +20,25 @@ public class HorseDropper : MonoBehaviour
 
     void Start()
     {
-        horseMaterials = new List<Material>();
-        for(int i = 0; i < horseMaterialCount; i ++)
+        for(int i = 0; i < horseCount; i ++)
         {
-            Material newHorseMaterial = new Material(horseShader);
-            newHorseMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
-            newHorseMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
-            horseMaterials.Add(newHorseMaterial);
+            Material bodyMaterial = new Material(horseShader);
+            bodyMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
+            bodyMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
+            Material maineMaterial = new Material(horseShader);
+            maineMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
+            maineMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
+            Horse newHorse = Instantiate(horsePrefab, Vector3.zero, Quaternion.identity, horsePool).GetComponent<Horse>();
+            horses.Add(newHorse);
+
+            foreach(Renderer renderer in newHorse.bodyRenderers)
+            {
+                renderer.sharedMaterial = bodyMaterial;
+            }
+            foreach(Renderer renderer in newHorse.maineRenderers)
+            {
+                renderer.sharedMaterial = maineMaterial;
+            }
         }
     }
 
@@ -40,19 +53,12 @@ public class HorseDropper : MonoBehaviour
         //spawn a horse when we click
         if(Input.GetMouseButtonDown(0))
         {
-            Material horseMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
-            Material maineMaterial = horseMaterials[Random.Range(0, horseMaterials.Count)];
-            Horse newHorse = Instantiate(horsePrefab, transform.position, Random.rotation, horsePile).GetComponent<Horse>();
-            horses.Add(newHorse);
-
-            foreach(Renderer renderer in newHorse.bodyRenderers)
-            {
-                renderer.sharedMaterial = horseMaterial;
-            }
-            foreach(Renderer renderer in newHorse.maineRenderers)
-            {
-                renderer.sharedMaterial = maineMaterial;
-            }
+            //Horse newHorse = Instantiate(horsePrefab, transform.position, Random.rotation, horsePile).GetComponent<Horse>();
+            Horse newHorse = GetNextHorse();
+            newHorse.transform.position = transform.position;
+            newHorse.transform.rotation = Random.rotation;
+            newHorse.transform.parent = horsePile;
+            newHorse.rigidbody.angularVelocity = Random.rotation.eulerAngles;
         }
     }
 
@@ -68,5 +74,26 @@ public class HorseDropper : MonoBehaviour
             pileHeight = Mathf.Max(pileHeight, horse.bodyRenderers[0].bounds.max.y);
         }
         return pileHeight;
+    }
+
+    Horse GetNextHorse()
+    {
+        foreach(Horse horse in horses)
+        {
+            if(!horse.gameObject.activeInHierarchy)
+            {
+                return horse;
+            }
+        }
+        return null;
+    }
+
+    public void ReturnAllHorses()
+    {
+        foreach(Horse horse in horses)
+        {
+            horse.transform.parent = horsePool;
+            horse.ResetProperties();
+        }
     }
 }

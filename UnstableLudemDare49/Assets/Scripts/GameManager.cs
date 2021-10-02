@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGameClicked()
     {
+        horseDropper.ReturnAllHorses();
         gameOverText.SetActive(false);
         restartGameButton.SetActive(false);
         StartCoroutine(DisplayIntroText());
