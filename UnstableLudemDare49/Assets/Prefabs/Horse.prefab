@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4630401120495410936}
   - component: {fileID: 98031063196931913}
   - component: {fileID: 3947981970301219583}
+  - component: {fileID: 1537092437734972611}
+  - component: {fileID: 5671035628358624729}
   m_Layer: 7
   m_Name: Horse
   m_TagString: Untagged
@@ -64,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 4630401120495410936}
   collected: 0
+  touchedGround: 0
   maxSpin: 1
   bodyRenderers:
   - {fileID: 6914418921902822708}
@@ -75,6 +78,7 @@ MonoBehaviour:
   maineRenderers:
   - {fileID: 244109615846644510}
   - {fileID: 4996458149611774310}
+  groundCollider: {fileID: 0}
 --- !u!136 &3947981970301219583
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -86,9 +90,35 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
-  m_Height: 2.8
+  m_Height: 2.01
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.24, z: 0.18}
+--- !u!65 &1537092437734972611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460756007377011145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.518758, y: 1.6655473, z: 0.41636634}
+  m_Center: {x: -0.0051195323, y: -0.33277363, z: -0.59899247}
+--- !u!65 &5671035628358624729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8460756007377011145}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.518758, y: 1.6655473, z: 0.2832569}
+  m_Center: {x: -0.0051195323, y: -0.33277363, z: 0.6655472}
 --- !u!1001 &6068157580029299137
 PrefabInstance:
   m_ObjectHideFlags: 0
