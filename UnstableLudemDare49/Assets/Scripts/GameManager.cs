@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] HorseGameButton startGameButton;
-    [SerializeField] GameObject gameOverMenu;
-    [SerializeField] HorseGameButton restartGameButton;
+
     [SerializeField] GameObject introText;
+    [SerializeField] GameObject titleText;
+    [SerializeField] GameObject gameOverText;
+    [SerializeField] GameObject startGameButton;
+    [SerializeField] GameObject restartGameButton;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
 
     void Start()
     {
-        startGameButton.clicked += StartGameClicked;
-        restartGameButton.clicked += RestartGameClicked;
-        mainMenu.SetActive(true);
-        gameOverMenu.SetActive(false);
-        introText.SetActive(false);
-    }
-
-    void OnDestroy()
-    {
-        startGameButton.clicked -= StartGameClicked;
-        restartGameButton.clicked -= RestartGameClicked;
+        showMainMenu();
+        
     }
 
     void ResetGame()
@@ -33,15 +24,18 @@ public class GameManager : MonoBehaviour
         horseDropper.canDrop = false;
     }
 
-    void StartGameClicked()
+    public void StartGameClicked()
     {
-        mainMenu.SetActive(false);
+        Debug.Log("Start game clicked");
+        titleText.SetActive(false);
+        startGameButton.SetActive(false);
         StartCoroutine(DisplayIntroText());
     }
 
-    void RestartGameClicked()
+    public void RestartGameClicked()
     {
-        gameOverMenu.SetActive(false);
+        gameOverText.SetActive(false);
+        restartGameButton.SetActive(false);
         StartCoroutine(DisplayIntroText());
     }
 
@@ -56,6 +50,21 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         horseDropper.canDrop = false;
-        gameOverMenu.SetActive(true);
+        ShowGameOverMenu();
+    }
+
+    void showMainMenu()
+    {
+        titleText.SetActive(true);
+        gameOverText.SetActive(false);
+        introText.SetActive(false);
+        startGameButton.SetActive(true);
+        restartGameButton.SetActive(false);
+    }
+
+    void ShowGameOverMenu()
+    {
+        gameOverText.SetActive(true);
+        restartGameButton.SetActive(true);
     }
 }
