@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HorseDropper : MonoBehaviour
 {
-    public bool canDrop = false;
     public GameObject horsePrefab;
     public List<Texture> horseTextures;
     List<Material> horseMaterials;
@@ -13,6 +12,9 @@ public class HorseDropper : MonoBehaviour
     public Transform horsePile;
 
     public List<Horse> horses;
+
+    public float maxHeightThisRound = 0;
+    public float currentPileHeight = 0;
     
 
     void Start()
@@ -29,10 +31,12 @@ public class HorseDropper : MonoBehaviour
 
     void Update()
     {
-        if(!canDrop)
+        if(!GameManager.gameActive)
         {
             return;
         }
+        currentPileHeight = PileHeight();
+        maxHeightThisRound = Mathf.Max(maxHeightThisRound, currentPileHeight);
         //spawn a horse when we click
         if(Input.GetMouseButtonDown(0))
         {
@@ -52,11 +56,15 @@ public class HorseDropper : MonoBehaviour
         }
     }
 
-    public float PileHeight()
+    float PileHeight()
     {
         float pileHeight = 0;
         foreach(Horse horse in horses)
         {
+            if(!horse.hasCollided)
+            {
+                continue;
+            }
             pileHeight = Mathf.Max(pileHeight, horse.bodyRenderers[0].bounds.max.y);
         }
         return pileHeight;

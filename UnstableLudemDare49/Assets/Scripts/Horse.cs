@@ -6,6 +6,7 @@ public class Horse : MonoBehaviour
 {
     public Rigidbody rigidbody;
     public bool collected = false;
+    public bool hasCollided;
 
     public float maxSpin = 1;
 
@@ -22,6 +23,7 @@ public class Horse : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collision");
+        hasCollided = true;
         if(rigidbody == null)
         {
             return;

@@ -23,7 +23,7 @@ public class Helecopter : MonoBehaviour
     void Update()
     {
         //move the helecopter
-        float newY = Mathf.Max(helecopterStartPoint.y, horseDropper.PileHeight() + minDistanceFromHelecopterToPile);
+        float newY = Mathf.Max(helecopterStartPoint.y, horseDropper.currentPileHeight + minDistanceFromHelecopterToPile);
         RaycastHit hit; 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
         if ( Physics.Raycast (ray,out hit, float.PositiveInfinity, mask)) 

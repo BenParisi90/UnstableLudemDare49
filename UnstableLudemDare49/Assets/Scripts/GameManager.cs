@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,18 +11,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject restartGameButton;
+    [SerializeField] TextMeshProUGUI heightText;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
+
+    public static bool gameActive = false;
+    float highScore = 0;
 
     void Start()
     {
         showMainMenu();
-        
     }
 
-    void ResetGame()
+    void Update()
     {
-        horseDropper.canDrop = false;
+        highScore = Mathf.Max(highScore, horseDropper.maxHeightThisRound);
+        heightText.text = "Max Height: " + horseDropper.maxHeightThisRound + "\nHigh Score: " + highScore;
     }
 
     public void StartGameClicked()
@@ -44,12 +49,13 @@ public class GameManager : MonoBehaviour
         introText.SetActive(true);
         yield return new WaitForSeconds(introTextTime);
         introText.SetActive(false);
-        horseDropper.canDrop = true;
+        heightText.gameObject.SetActive(true);
+        gameActive = true;
     }
 
     public void EndGame()
     {
-        horseDropper.canDrop = false;
+        gameActive = false;
         ShowGameOverMenu();
     }
 
