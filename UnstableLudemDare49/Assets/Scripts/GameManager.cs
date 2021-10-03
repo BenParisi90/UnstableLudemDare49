@@ -14,8 +14,9 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField] GameObject introText;
+    float barnHeight = 10;
+    [SerializeField] GameObject introImage;
+    [SerializeField] TextMeshProUGUI introText;
     [SerializeField] AudioSource introSound;
     [SerializeField] GameObject titleText;
     [SerializeField] GameObject gameOverText;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         showMainMenu();
+        barnTransform.position = new Vector3(0, barnHeight, 0);
     }
 
     void Update()
@@ -63,18 +65,22 @@ public class GameManager : MonoBehaviour
         gameOverText.SetActive(false);
         restartGameButton.SetActive(false);
         cameraPivot.pivotTarget = Vector3.zero;
+        barnTransform.position = new Vector3(0, barnHeight, 0);
         StartCoroutine(DisplayIntroText());
     }
 
     IEnumerator DisplayIntroText()
     {
         gameState = GameState.INTRO;
-        introText.SetActive(true);
+        introImage.SetActive(true);
+        introText.text = barnHeight.ToString() + "M";
+        introText.gameObject.SetActive(true);
         introSound.Play();
         horseDropper.maxHeightThisRound = 0;
         yield return new WaitForSeconds(introTextTime);
-        introText.SetActive(false);
+        introImage.SetActive(false);
         heightText.gameObject.SetActive(true);
+        introText.gameObject.SetActive(false);
         gameState = GameState.GAMEPLAY;
     }
 
@@ -89,6 +95,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        barnHeight += 5;
         horseDropper.FreezeLiveHorses();
         gameState = GameState.WIN;
         cameraPivot.pivotTarget = barnTransform.position;
@@ -101,10 +108,11 @@ public class GameManager : MonoBehaviour
         gameState = GameState.MAIN_MENU;
         titleText.SetActive(true);
         gameOverText.SetActive(false);
-        introText.SetActive(false);
+        introImage.SetActive(false);
         startGameButton.SetActive(true);
         restartGameButton.SetActive(false);
         winGameText.SetActive(false);
+        introText.gameObject.SetActive(false);
     }
 
     void ShowGameOverMenu()
