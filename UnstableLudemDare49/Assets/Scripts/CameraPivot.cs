@@ -8,7 +8,7 @@ public class CameraPivot : MonoBehaviour
     public Camera camera;
     [SerializeField] Transform lookAtContainer;
     float pivotSpeed = 10;
-    float cameraPadding = 4;
+    float cameraPadding = 10;
     public Vector3 pivotTarget = Vector3.zero;
     public Vector3 cameraLocalPositionTarget;
 
