@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject restartGameButton;
     [SerializeField] TextMeshProUGUI heightText;
     [SerializeField] GameObject winGameText;
+    [SerializeField] AudioSource winGameSound;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
     [SerializeField] CameraPivot cameraPivot;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         horseDropper.FreezeLiveHorses();
         gameState = GameState.WIN;
         cameraPivot.pivotTarget = barnTransform.position;
+        winGameSound.Play();
         ShowWinMenu();
     }
 
