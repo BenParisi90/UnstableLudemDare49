@@ -39,6 +39,8 @@ public class Horse : MonoBehaviour
             return;
         }
         Debug.Log("other horse");
+        rigidbody.velocity = (rigidbody.velocity + otherHorse.rigidbody.velocity) / 2;
+        rigidbody.angularVelocity = (rigidbody.angularVelocity + otherHorse.rigidbody.angularVelocity) / 2;
         Destroy(otherHorse.rigidbody);
         otherHorse.collected = true;
         otherHorse.transform.parent = transform;
@@ -59,6 +61,8 @@ public class Horse : MonoBehaviour
         else
         {
             rigidbody.isKinematic = false;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.angularVelocity = Vector3.zero;
         }
         collected = false;
         touchedGround = false;
