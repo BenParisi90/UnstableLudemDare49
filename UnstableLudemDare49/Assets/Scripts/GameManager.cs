@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] GameObject introText;
+    [SerializeField] AudioSource introSound;
     [SerializeField] GameObject titleText;
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject startGameButton;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
     IEnumerator DisplayIntroText()
     {
         introText.SetActive(true);
+        introSound.Play();
         yield return new WaitForSeconds(introTextTime);
         introText.SetActive(false);
         heightText.gameObject.SetActive(true);
