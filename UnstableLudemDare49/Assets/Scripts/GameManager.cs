@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioSource introSound;
     [SerializeField] GameObject titleText;
     [SerializeField] GameObject gameOverText;
+    [SerializeField] AudioSource gameOverSound;
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject restartGameButton;
     [SerializeField] TextMeshProUGUI heightText;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         gameActive = false;
         gameOver = true;
         cameraPivot.pivotTarget = endingHorsePosition;
+        gameOverSound.Play();
         ShowGameOverMenu();
     }
 
