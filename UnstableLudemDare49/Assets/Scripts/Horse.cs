@@ -29,10 +29,6 @@ public class Horse : MonoBehaviour
             return;
         }
         Debug.Log("Has Rigid body");
-        if(collision.other == groundCollider)
-        {
-            touchedGround = true;
-        }
         Horse otherHorse = collision.transform.GetComponent<Horse>();
         if(otherHorse == null || !otherHorse.touchedGround)
         {
