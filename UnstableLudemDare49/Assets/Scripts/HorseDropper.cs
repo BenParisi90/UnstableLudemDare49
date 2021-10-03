@@ -19,6 +19,7 @@ public class HorseDropper : MonoBehaviour
     int horseSoundCount = 50;
     [SerializeField] List<AudioClip> horseDropClips;
     List<AudioSource> horseSounds;
+    bool canPlayHorseSound = true;
     
 
     void Start()
@@ -72,8 +73,20 @@ public class HorseDropper : MonoBehaviour
             newHorse.transform.rotation = Random.rotation;
             newHorse.transform.parent = horsePile;
             newHorse.rigidbody.angularVelocity = Random.rotation.eulerAngles;
-            horseSounds[Random.Range(0, horseSounds.Count)].Play();
+            if(canPlayHorseSound)
+            {
+                horseSounds[Random.Range(0, horseSounds.Count)].Play();     
+                StartCoroutine(HorseSoundCooldown());
+            }
+                       
         }
+    }
+
+    IEnumerator HorseSoundCooldown()
+    {
+        canPlayHorseSound = false;
+        yield return new WaitForSeconds(.5f);
+        canPlayHorseSound = true;
     }
 
     float PileHeight()
