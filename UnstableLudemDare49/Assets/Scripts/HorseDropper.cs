@@ -16,7 +16,9 @@ public class HorseDropper : MonoBehaviour
 
     public float maxHeightThisRound = 0;
     public float currentPileHeight = 0;
-    [SerializeField] Collider groundCollider;
+    int horseSoundCount = 50;
+    [SerializeField] List<AudioClip> horseDropClips;
+    List<AudioSource> horseSounds;
     
 
     void Start()
@@ -30,7 +32,6 @@ public class HorseDropper : MonoBehaviour
             maineMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
             maineMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
             Horse newHorse = Instantiate(horsePrefab, Vector3.zero, Quaternion.identity, horsePool).GetComponent<Horse>();
-            newHorse.groundCollider = groundCollider;
             allHorses.Add(newHorse);
 
             foreach(Renderer renderer in newHorse.bodyRenderers)
@@ -41,6 +42,16 @@ public class HorseDropper : MonoBehaviour
             {
                 renderer.sharedMaterial = maineMaterial;
             }
+        }
+
+        horseSounds = new List<AudioSource>();
+        for(int i = 0; i < horseSoundCount; i ++)
+        {
+            GameObject newHorseSound = new GameObject();
+            AudioSource newAudioSource = newHorseSound.AddComponent<AudioSource>();
+            newAudioSource.clip = horseDropClips[Random.Range(0, horseDropClips.Count)];
+            horseSounds.Add(newAudioSource);
+            newHorseSound.transform.parent = transform;
         }
     }
 
@@ -61,6 +72,7 @@ public class HorseDropper : MonoBehaviour
             newHorse.transform.rotation = Random.rotation;
             newHorse.transform.parent = horsePile;
             newHorse.rigidbody.angularVelocity = Random.rotation.eulerAngles;
+            horseSounds[Random.Range(0, horseSounds.Count)].Play();
         }
     }
 

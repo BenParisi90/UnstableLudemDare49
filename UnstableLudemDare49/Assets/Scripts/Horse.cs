@@ -14,7 +14,6 @@ public class Horse : MonoBehaviour
     public List<Renderer> maineRenderers;
 
     float timeTillNotFresh = 1.2f;
-    public Collider groundCollider;
 
     void Start()
     {

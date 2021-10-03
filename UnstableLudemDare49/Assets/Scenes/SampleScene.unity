@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 438202442}
   - component: {fileID: 438202443}
   m_Layer: 6
-  m_Name: Helecopter
+  m_Name: Helicopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,7 +609,17 @@ MonoBehaviour:
   allHorses: []
   maxHeightThisRound: 0
   currentPileHeight: 0
-  groundCollider: {fileID: 0}
+  horseDropClips:
+  - {fileID: 8300000, guid: 709991e5594ba7943a536b5bad1020c9, type: 3}
+  - {fileID: 8300000, guid: 2dc280e7223c1d04b90ad333a3069f8a, type: 3}
+  - {fileID: 8300000, guid: 1c97ea224ba12f142b50806c0bf50690, type: 3}
+  - {fileID: 8300000, guid: 426a74d254a74564a9fde443eca2be5a, type: 3}
+  - {fileID: 8300000, guid: 75828ce6a463a864b9e49cf39499cf4d, type: 3}
+  - {fileID: 8300000, guid: 4b96d69b43c3eb54c9acc9f772409339, type: 3}
+  - {fileID: 8300000, guid: 122ea224b74deb3498e5ecf668c05fdf, type: 3}
+  - {fileID: 8300000, guid: 5b07fba43f979fb4eb986a853a9411a5, type: 3}
+  - {fileID: 8300000, guid: 8fad78fbe62f76b4c9c7764d2ce54842, type: 3}
+  - {fileID: 8300000, guid: b0a069e200bf01547b783a502e1002fb, type: 3}
 --- !u!1 &556541836
 GameObject:
   m_ObjectHideFlags: 0
