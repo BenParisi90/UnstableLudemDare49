@@ -56,6 +56,10 @@ public class Horse : MonoBehaviour
         {
             rigidbody = gameObject.AddComponent<Rigidbody>();
         }
+        else
+        {
+            rigidbody.isKinematic = false;
+        }
         collected = false;
         touchedGround = false;
     }

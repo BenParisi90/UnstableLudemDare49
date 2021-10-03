@@ -12,7 +12,7 @@ public class HorseDropper : MonoBehaviour
     public Transform horsePile;
     public Transform horsePool;
 
-    public List<Horse> horses;
+    public List<Horse> allHorses;
 
     public float maxHeightThisRound = 0;
     public float currentPileHeight = 0;
@@ -31,7 +31,7 @@ public class HorseDropper : MonoBehaviour
             maineMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
             Horse newHorse = Instantiate(horsePrefab, Vector3.zero, Quaternion.identity, horsePool).GetComponent<Horse>();
             newHorse.groundCollider = groundCollider;
-            horses.Add(newHorse);
+            allHorses.Add(newHorse);
 
             foreach(Renderer renderer in newHorse.bodyRenderers)
             {
@@ -67,7 +67,7 @@ public class HorseDropper : MonoBehaviour
     float PileHeight()
     {
         float pileHeight = 0;
-        foreach(Horse horse in horses)
+        foreach(Horse horse in allHorses)
         {
             if(!horse.touchedGround)
             {
@@ -80,7 +80,7 @@ public class HorseDropper : MonoBehaviour
 
     Horse GetNextHorse()
     {
-        foreach(Horse horse in horses)
+        foreach(Horse horse in allHorses)
         {
             if(!horse.gameObject.activeInHierarchy)
             {
@@ -92,10 +92,19 @@ public class HorseDropper : MonoBehaviour
 
     public void ReturnAllHorses()
     {
-        foreach(Horse horse in horses)
+        foreach(Horse horse in allHorses)
         {
             horse.transform.parent = horsePool;
             horse.ResetProperties();
+        }
+    }
+
+    public void FreezeLiveHorses()
+    {
+        for(int i = 0; i < horsePile.childCount; i ++)
+        {
+            Horse horse = horsePile.GetChild(i).GetComponent<Horse>();
+            horse.rigidbody.isKinematic = true;
         }
     }
 }

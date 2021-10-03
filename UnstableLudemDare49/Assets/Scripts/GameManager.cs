@@ -14,8 +14,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI heightText;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
+    [SerializeField] CameraPivot cameraPivot;
 
     public static bool gameActive = false;
+    public static bool gameOver = false;
     float highScore = 0;
 
     void Start()
@@ -39,9 +41,11 @@ public class GameManager : MonoBehaviour
 
     public void RestartGameClicked()
     {
+        gameOver = false;
         horseDropper.ReturnAllHorses();
         gameOverText.SetActive(false);
         restartGameButton.SetActive(false);
+        cameraPivot.pivotTarget = Vector3.zero;
         StartCoroutine(DisplayIntroText());
     }
 
@@ -54,9 +58,11 @@ public class GameManager : MonoBehaviour
         gameActive = true;
     }
 
-    public void EndGame()
+    public void EndGame(Vector3 endingHorsePosition)
     {
         gameActive = false;
+        gameOver = true;
+        cameraPivot.pivotTarget = endingHorsePosition;
         ShowGameOverMenu();
     }
 

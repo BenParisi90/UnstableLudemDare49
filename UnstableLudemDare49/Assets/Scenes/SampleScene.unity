@@ -486,7 +486,7 @@ MonoBehaviour:
   horseShader: {fileID: 4800000, guid: 70dace53ef276b843884fad561610231, type: 3}
   horsePile: {fileID: 366658785}
   horsePool: {fileID: 1051842740}
-  horses: []
+  allHorses: []
   maxHeightThisRound: 0
   currentPileHeight: 0
   groundCollider: {fileID: 560060468}
@@ -1202,10 +1202,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.24, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1795681973}
+  m_Father: {fileID: 1911349305}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &966581675
@@ -1490,7 +1490,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 1795681973}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1758143680
 GameObject:
@@ -1664,6 +1664,7 @@ MonoBehaviour:
   restartGameButton: {fileID: 556541836}
   heightText: {fileID: 1176649537}
   horseDropper: {fileID: 438202443}
+  cameraPivot: {fileID: 1795681972}
 --- !u!4 &1762271723
 Transform:
   m_ObjectHideFlags: 0
@@ -1709,6 +1710,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helecopter: {fileID: 438202441}
   camera: {fileID: 963194227}
+  lookAtContainer: {fileID: 1911349305}
+  pivotTarget: {x: 0, y: 0, z: 0}
+  cameraLocalPositionTarget: {x: 0, y: 0, z: 0}
 --- !u!4 &1795681973
 Transform:
   m_ObjectHideFlags: 0
@@ -1720,10 +1724,41 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 963194228}
   - {fileID: 1477755530}
+  - {fileID: 1911349305}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1911349304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1911349305}
+  m_Layer: 0
+  m_Name: LookAtContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1911349305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911349304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.24, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 963194228}
+  m_Father: {fileID: 1795681973}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1990538491
 GameObject:
@@ -1891,6 +1926,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1762271722}
+  horseDropper: {fileID: 438202443}
 --- !u!65 &2064366634
 BoxCollider:
   m_ObjectHideFlags: 0

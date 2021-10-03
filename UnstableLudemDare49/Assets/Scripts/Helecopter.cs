@@ -22,6 +22,10 @@ public class Helecopter : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.gameOver)
+        {
+            return;
+        }
         //move the helecopter
         float newY = Mathf.Max(helecopterStartPoint.y, horseDropper.currentPileHeight + minDistanceFromHelecopterToPile);
         RaycastHit hit; 
