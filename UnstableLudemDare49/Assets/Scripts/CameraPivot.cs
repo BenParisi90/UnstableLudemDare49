@@ -19,7 +19,7 @@ public class CameraPivot : MonoBehaviour
 
     void Update()
     {
-        //transform.Rotate(new Vector3(0, pivotSpeed * Time.deltaTime, 0));
+        transform.Rotate(new Vector3(0, pivotSpeed * Time.deltaTime, 0));
 
         switch(GameManager.gameState)
         {

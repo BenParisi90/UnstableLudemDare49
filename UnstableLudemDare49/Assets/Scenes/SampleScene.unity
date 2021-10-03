@@ -2712,8 +2712,8 @@ MonoBehaviour:
   titleText: {fileID: 893981929}
   gameOverText: {fileID: 1758143680}
   startGameButton: {fileID: 1990538491}
-  restartGameButtonLose: {fileID: 556541836}
-  restartGameButtonWin: {fileID: 1936208880}
+  restartGameButtonLose: {fileID: 1936208880}
+  restartGameButtonWin: {fileID: 556541836}
   heightText: {fileID: 1176649537}
   winGameText: {fileID: 630881449}
   horseDropper: {fileID: 438202443}
