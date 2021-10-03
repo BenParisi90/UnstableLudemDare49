@@ -17,19 +17,18 @@ public class GameManager : MonoBehaviour
     float barnHeight = 10;
     [SerializeField] GameObject introImage;
     [SerializeField] TextMeshProUGUI introText;
-    [SerializeField] AudioSource introSound;
     [SerializeField] GameObject titleText;
     [SerializeField] GameObject gameOverText;
-    [SerializeField] AudioSource gameOverSound;
     [SerializeField] GameObject startGameButton;
-    [SerializeField] GameObject restartGameButton;
+    [SerializeField] GameObject restartGameButtonLose;
+    [SerializeField] GameObject restartGameButtonWin;
     [SerializeField] TextMeshProUGUI heightText;
     [SerializeField] GameObject winGameText;
-    [SerializeField] AudioSource winGameSound;
-    float introTextTime = 2;
+    float introTextTime = 2.8f;
     [SerializeField] HorseDropper horseDropper;
     [SerializeField] CameraPivot cameraPivot;
     [SerializeField] Transform barnTransform;
+    [SerializeField] MusicManager musicManager;
 
     public static GameState gameState = GameState.MAIN_MENU;
     float highScore = 0;
@@ -63,7 +62,7 @@ public class GameManager : MonoBehaviour
         gameState = GameState.GAMEPLAY;
         horseDropper.ReturnAllHorses();
         gameOverText.SetActive(false);
-        restartGameButton.SetActive(false);
+        restartGameButtonLose.SetActive(false);
         cameraPivot.pivotTarget = Vector3.zero;
         barnTransform.position = new Vector3(0, barnHeight, 0);
         winGameText.SetActive(false);
@@ -76,13 +75,14 @@ public class GameManager : MonoBehaviour
         introImage.SetActive(true);
         introText.text = barnHeight.ToString() + "M";
         introText.gameObject.SetActive(true);
-        introSound.Play();
+        musicManager.PlayMusic(musicManager.IntroMusic);
         horseDropper.maxHeightThisRound = 0;
         yield return new WaitForSeconds(introTextTime);
         introImage.SetActive(false);
         heightText.gameObject.SetActive(true);
         introText.gameObject.SetActive(false);
         gameState = GameState.GAMEPLAY;
+        musicManager.PlayMusic(musicManager.GameplayMusic);
     }
 
     public void EndGame(Vector3 endingHorsePosition)
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
         horseDropper.FreezeLiveHorses();
         gameState = GameState.GAME_OVER;
         cameraPivot.pivotTarget = endingHorsePosition;
-        gameOverSound.Play();
+        musicManager.PlayMusic(musicManager.GameOverMusic);
         ShowGameOverMenu();
     }
 
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         horseDropper.FreezeLiveHorses();
         gameState = GameState.WIN;
         cameraPivot.pivotTarget = barnTransform.position;
-        winGameSound.Play();
+        musicManager.PlayMusic(musicManager.WinGameMusic);
         ShowWinMenu();
     }
 
@@ -111,7 +111,8 @@ public class GameManager : MonoBehaviour
         gameOverText.SetActive(false);
         introImage.SetActive(false);
         startGameButton.SetActive(true);
-        restartGameButton.SetActive(false);
+        restartGameButtonLose.SetActive(false);
+        restartGameButtonWin.SetActive(false);
         winGameText.SetActive(false);
         introText.gameObject.SetActive(false);
     }
@@ -119,12 +120,12 @@ public class GameManager : MonoBehaviour
     void ShowGameOverMenu()
     {
         gameOverText.SetActive(true);
-        restartGameButton.SetActive(true);
+        restartGameButtonLose.SetActive(true);
     }
 
     void ShowWinMenu()
     {
         winGameText.SetActive(true);
-        restartGameButton.SetActive(true);
+        restartGameButtonWin.SetActive(true);
     }
 }
