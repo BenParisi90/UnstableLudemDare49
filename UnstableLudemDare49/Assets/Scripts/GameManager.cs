@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         restartGameButton.SetActive(false);
         cameraPivot.pivotTarget = Vector3.zero;
         barnTransform.position = new Vector3(0, barnHeight, 0);
+        winGameText.SetActive(false);
         StartCoroutine(DisplayIntroText());
     }
 
