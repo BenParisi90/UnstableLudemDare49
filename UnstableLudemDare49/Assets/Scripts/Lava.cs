@@ -8,14 +8,13 @@ public class Lava : MonoBehaviour
     [SerializeField] HorseDropper horseDropper; 
     void OnCollisionEnter(Collision collision)
     {
-        if(GameManager.gameOver)
+        if(GameManager.gameState != GameState.GAMEPLAY)
         {
             return;
         }
         Horse otherHorse = collision.collider.GetComponent<Horse>();
         if(otherHorse != null)
         {
-            horseDropper.FreezeLiveHorses();
             Debug.Log("END GAME: " +  otherHorse.transform.position);
             gameManager.EndGame(otherHorse.transform.position);
         }

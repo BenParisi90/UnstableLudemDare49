@@ -46,7 +46,7 @@ public class HorseDropper : MonoBehaviour
 
     void Update()
     {
-        if(!GameManager.gameActive)
+        if(GameManager.gameState != GameState.GAMEPLAY)
         {
             return;
         }

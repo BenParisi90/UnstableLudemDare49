@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+public enum GameState
+{
+    MAIN_MENU,
+    INTRO,
+    GAMEPLAY,
+    GAME_OVER,
+    WIN
+}
+
 public class GameManager : MonoBehaviour
 {
 
@@ -14,12 +23,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject startGameButton;
     [SerializeField] GameObject restartGameButton;
     [SerializeField] TextMeshProUGUI heightText;
+    [SerializeField] GameObject winGameText;
     float introTextTime = 2;
     [SerializeField] HorseDropper horseDropper;
     [SerializeField] CameraPivot cameraPivot;
+    [SerializeField] Transform barnTransform;
 
-    public static bool gameActive = false;
-    public static bool gameOver = false;
+    public static GameState gameState = GameState.MAIN_MENU;
     float highScore = 0;
 
     void Start()
@@ -29,8 +39,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         highScore = Mathf.Max(highScore, horseDropper.maxHeightThisRound);
-        heightText.text = "Max Height: " + horseDropper.maxHeightThisRound + "\nHigh Score: " + highScore;
+        string highScoreString = highScore.ToString("f2");
+        string maxHeightString = horseDropper.maxHeightThisRound.ToString("f2");
+        heightText.text = "MAX HEIGHT " + maxHeightString + "\nHIGH SCORE " + highScoreString;
     }
 
     public void StartGameClicked()
@@ -43,7 +56,8 @@ public class GameManager : MonoBehaviour
 
     public void RestartGameClicked()
     {
-        gameOver = false;
+        //gameOver = false;
+        gameState = GameState.GAMEPLAY;
         horseDropper.ReturnAllHorses();
         gameOverText.SetActive(false);
         restartGameButton.SetActive(false);
@@ -53,36 +67,53 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DisplayIntroText()
     {
+        gameState = GameState.INTRO;
         introText.SetActive(true);
         introSound.Play();
         horseDropper.maxHeightThisRound = 0;
         yield return new WaitForSeconds(introTextTime);
         introText.SetActive(false);
         heightText.gameObject.SetActive(true);
-        gameActive = true;
+        gameState = GameState.GAMEPLAY;
     }
 
     public void EndGame(Vector3 endingHorsePosition)
     {
-        gameActive = false;
-        gameOver = true;
+        horseDropper.FreezeLiveHorses();
+        gameState = GameState.GAME_OVER;
         cameraPivot.pivotTarget = endingHorsePosition;
         gameOverSound.Play();
         ShowGameOverMenu();
     }
 
+    public void WinGame()
+    {
+        horseDropper.FreezeLiveHorses();
+        gameState = GameState.WIN;
+        cameraPivot.pivotTarget = barnTransform.position;
+        ShowWinMenu();
+    }
+
     void showMainMenu()
     {
+        gameState = GameState.MAIN_MENU;
         titleText.SetActive(true);
         gameOverText.SetActive(false);
         introText.SetActive(false);
         startGameButton.SetActive(true);
         restartGameButton.SetActive(false);
+        winGameText.SetActive(false);
     }
 
     void ShowGameOverMenu()
     {
         gameOverText.SetActive(true);
+        restartGameButton.SetActive(true);
+    }
+
+    void ShowWinMenu()
+    {
+        winGameText.SetActive(true);
         restartGameButton.SetActive(true);
     }
 }

@@ -22,7 +22,7 @@ public class Helecopter : MonoBehaviour
 
     void Update()
     {
-        if(GameManager.gameOver)
+        if(GameManager.gameState == GameState.GAME_OVER)
         {
             return;
         }

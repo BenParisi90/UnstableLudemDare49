@@ -21,17 +21,23 @@ public class CameraPivot : MonoBehaviour
     {
         //transform.Rotate(new Vector3(0, pivotSpeed * Time.deltaTime, 0));
 
-        if(GameManager.gameOver)
+        switch(GameManager.gameState)
         {
-            cameraLocalPositionTarget = new Vector3(0, 2,-3);
-            camera.transform.LookAt(pivotTarget, Vector3.up);
-        }
-        else
-        {
-            float camY = helecopter.position.y / 2;
-            float camZ = (helecopter.position.y + cameraPadding) * 0.5f / Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
-            cameraLocalPositionTarget = new Vector3(0,camY,-camZ);
-            camera.transform.LookAt(new Vector3(0, camera.transform.position.y, 0), Vector3.up);
+            case GameState.GAME_OVER:
+                cameraLocalPositionTarget = new Vector3(0, 2,-3);
+                camera.transform.LookAt(pivotTarget, Vector3.up);
+                break;
+            case GameState.GAMEPLAY:
+            case GameState.INTRO:
+                float camY = helecopter.position.y / 2;
+                float camZ = (helecopter.position.y + cameraPadding) * 0.5f / Mathf.Tan(camera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+                cameraLocalPositionTarget = new Vector3(0,camY,-camZ);
+                camera.transform.LookAt(new Vector3(0, camera.transform.position.y, 0), Vector3.up);
+                break;
+            case GameState.WIN:
+                cameraLocalPositionTarget = new Vector3(0, 1,-6);
+                camera.transform.LookAt(pivotTarget, Vector3.up);
+                break;
         }
         
         transform.position = Vector3.Lerp(transform.position, pivotTarget, .01f);
