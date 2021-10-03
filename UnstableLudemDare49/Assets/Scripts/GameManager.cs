@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     {
         introText.SetActive(true);
         introSound.Play();
+        horseDropper.maxHeightThisRound = 0;
         yield return new WaitForSeconds(introTextTime);
         introText.SetActive(false);
         heightText.gameObject.SetActive(true);
