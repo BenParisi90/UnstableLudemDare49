@@ -8,7 +8,7 @@ public class Helecopter : MonoBehaviour
     private Vector3 helecopterStartPoint;
     public Transform cameraPivot;
     float minAltitude;
-    float minDistanceFromHelecopterToPile = 2f;
+    float minDistanceFromHelecopterToPile = 7f;
     public HorseDropper horseDropper;
     Vector3 targetPosition;
 

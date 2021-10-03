@@ -9,7 +9,7 @@ public class Barn : MonoBehaviour
     {
         Debug.Log("barn hit");
         Horse horse = collider.GetComponent<Horse>();
-        if(horse != null)
+        if(horse != null && horse.touchedGround)
         {
             gameManager.WinGame();
         }
