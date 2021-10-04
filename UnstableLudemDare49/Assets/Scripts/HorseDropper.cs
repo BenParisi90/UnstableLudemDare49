@@ -23,6 +23,7 @@ public class HorseDropper : MonoBehaviour
     
     [SerializeField] AudioSource horseHitSound;
     [SerializeField] List<AudioClip> horseHitClips;
+    [SerializeField] GameObject instructionsText;
     void Start()
     {
         for(int i = 0; i < horseCount; i ++)
@@ -81,6 +82,7 @@ public class HorseDropper : MonoBehaviour
             newHorse.transform.rotation = Random.rotation;
             newHorse.transform.parent = horsePile;
             newHorse.rigidbody.angularVelocity = Random.rotation.eulerAngles;
+            instructionsText.SetActive(false);
             if(canPlayHorseSound)
             {
                 horseSounds[Random.Range(0, horseSounds.Count)].Play();     
