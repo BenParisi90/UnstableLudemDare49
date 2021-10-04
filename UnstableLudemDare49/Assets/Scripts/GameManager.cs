@@ -121,12 +121,18 @@ public class GameManager : MonoBehaviour
     void ShowGameOverMenu()
     {
         gameOverText.SetActive(true);
-        restartGameButtonLose.SetActive(true);
+        StartCoroutine(ShowButtonAfterTime(restartGameButtonLose));
     }
 
     void ShowWinMenu()
     {
         winGameText.SetActive(true);
-        restartGameButtonWin.SetActive(true);
+        StartCoroutine(ShowButtonAfterTime(restartGameButtonWin));
+    }
+
+    IEnumerator ShowButtonAfterTime(GameObject button)
+    {
+        yield return new WaitForSeconds(2f);
+        button.SetActive(true);
     }
 }
