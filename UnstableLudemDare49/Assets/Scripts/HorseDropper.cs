@@ -83,6 +83,7 @@ public class HorseDropper : MonoBehaviour
             newHorse.transform.parent = horsePile;
             newHorse.rigidbody.angularVelocity = Random.rotation.eulerAngles;
             instructionsText.SetActive(false);
+            newHorse.PlayRandomFrame();
             if(canPlayHorseSound)
             {
                 horseSounds[Random.Range(0, horseSounds.Count)].Play();     

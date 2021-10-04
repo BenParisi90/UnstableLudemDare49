@@ -17,6 +17,8 @@ public class Horse : MonoBehaviour
 
     public HorseDropper horseDropper;
 
+    [SerializeField] Animator horseAnimator;
+
     void Start()
     {
         rigidbody.angularVelocity = new Vector3(RandomSpin(),RandomSpin(),RandomSpin());
@@ -64,5 +66,10 @@ public class Horse : MonoBehaviour
         }
         collected = false;
         touchedGround = false;
+    }
+
+    public void PlayRandomFrame()
+    {
+        horseAnimator.Play("Horse", -1, Random.Range(0f, 1f));
     }
 }
