@@ -30,10 +30,10 @@ Shader "Horse"
 		{
 			float mulTime11 = _Time.y * 0.06666667;
 			float2 temp_cast_0 = (mulTime11).xx;
-			float2 uv_TexCoord2 = i.uv_texcoord * float2( 0.25,0.25 ) + temp_cast_0;
+			float2 uv_TexCoord2 = i.uv_texcoord * float2( 1,1 ) + temp_cast_0;
 			float mulTime29 = _Time.y * -0.06666667;
 			float2 temp_cast_1 = (mulTime29).xx;
-			float2 uv_TexCoord30 = i.uv_texcoord * float2( 0.25,0.25 ) + temp_cast_1;
+			float2 uv_TexCoord30 = i.uv_texcoord * float2( 1,1 ) + temp_cast_1;
 			float4 blendOpSrc16 = tex2D( _Texture, uv_TexCoord2 );
 			float4 blendOpDest16 = tex2D( _Pulse, uv_TexCoord30 );
 			o.Emission = ( saturate( abs( blendOpSrc16 - blendOpDest16 ) )).rgb;
@@ -47,11 +47,11 @@ Shader "Horse"
 }
 /*ASEBEGIN
 Version=18912
-292;327.3333;1572;788.3333;-1545.988;-89.59399;1.261052;True;True
+496.6667;320.6667;1408.667;787.6667;-483.381;142.93;1;True;True
 Node;AmplifyShaderEditor.RangedFloatNode;27;751.8542,455.8942;Inherit;False;Constant;_Float1;Float 1;1;0;Create;True;0;0;0;False;0;False;-0.06666667;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.RangedFloatNode;15;777.438,133.3214;Inherit;False;Constant;_Float0;Float 0;1;0;Create;True;0;0;0;False;0;False;0.06666667;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector2Node;3;986.321,-39.61563;Inherit;False;Constant;_Vector0;Vector 0;1;0;Create;True;0;0;0;False;0;False;0.25,0.25;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
-Node;AmplifyShaderEditor.Vector2Node;28;960.7372,282.9572;Inherit;False;Constant;_Vector1;Vector 1;1;0;Create;True;0;0;0;False;0;False;0.25,0.25;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;3;986.321,-39.61563;Inherit;False;Constant;_Vector0;Vector 0;1;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
+Node;AmplifyShaderEditor.Vector2Node;28;960.7372,282.9572;Inherit;False;Constant;_Vector1;Vector 1;1;0;Create;True;0;0;0;False;0;False;1,1;0,0;0;3;FLOAT2;0;FLOAT;1;FLOAT;2
 Node;AmplifyShaderEditor.SimpleTimeNode;29;933.4262,458.366;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;11;959.01,135.7932;Inherit;False;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.TextureCoordinatesNode;30;1165.438,374.1621;Inherit;False;0;-1;2;3;2;SAMPLER2D;;False;0;FLOAT2;1,1;False;1;FLOAT2;0,0;False;5;FLOAT2;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -83,4 +83,4 @@ WireConnection;22;0;21;0
 WireConnection;25;1;26;0
 WireConnection;32;2;16;0
 ASEEND*/
-//CHKSM=D07F018F22CE533E3EBF35533BE12BCED85F4B33
+//CHKSM=3BDC59EB1F21CDD91301B06E652721658AC0B114
