@@ -21,7 +21,8 @@ public class HorseDropper : MonoBehaviour
     List<AudioSource> horseSounds;
     bool canPlayHorseSound = true;
     
-
+    [SerializeField] AudioSource horseHitSound;
+    [SerializeField] List<AudioClip> horseHitClips;
     void Start()
     {
         for(int i = 0; i < horseCount; i ++)
@@ -33,6 +34,7 @@ public class HorseDropper : MonoBehaviour
             maineMaterial.SetTexture("_Texture", horseTextures[Random.Range(0, horseTextures.Count)]);
             maineMaterial.SetTexture("_Pulse", horseTextures[Random.Range(0, horseTextures.Count)]);
             Horse newHorse = Instantiate(horsePrefab, Vector3.zero, Quaternion.identity, horsePool).GetComponent<Horse>();
+            newHorse.horseDropper = this;
             allHorses.Add(newHorse);
 
             foreach(Renderer renderer in newHorse.bodyRenderers)
@@ -54,6 +56,12 @@ public class HorseDropper : MonoBehaviour
             horseSounds.Add(newAudioSource);
             newHorseSound.transform.parent = transform;
         }
+    }
+
+    public void PlayHorseHitSound()
+    {
+        horseHitSound.clip = horseHitClips[Random.Range(0, horseDropClips.Count)];
+        horseHitSound.Play();
     }
 
     void Update()

@@ -15,6 +15,8 @@ public class Horse : MonoBehaviour
 
     float timeTillNotFresh = 1.2f;
 
+    public HorseDropper horseDropper;
+
     void Start()
     {
         rigidbody.angularVelocity = new Vector3(RandomSpin(),RandomSpin(),RandomSpin());
@@ -40,6 +42,7 @@ public class Horse : MonoBehaviour
         otherHorse.collected = true;
         otherHorse.transform.parent = transform;
         touchedGround = true;
+        horseDropper.PlayHorseHitSound();
     }
 
     float RandomSpin()
