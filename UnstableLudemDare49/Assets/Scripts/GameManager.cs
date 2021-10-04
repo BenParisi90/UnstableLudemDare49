@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CameraPivot cameraPivot;
     [SerializeField] Transform barnTransform;
     [SerializeField] MusicManager musicManager;
+    [SerializeField] ParticleSystem winParticleSystem;
 
     public static GameState gameState = GameState.MAIN_MENU;
     float highScore = 0;
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour
         cameraPivot.pivotTarget = Vector3.zero;
         barnTransform.position = new Vector3(0, barnHeight, 0);
         winGameText.SetActive(false);
+        winParticleSystem.Stop();
         StartCoroutine(DisplayIntroText());
     }
 
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour
         gameState = GameState.WIN;
         cameraPivot.pivotTarget = barnTransform.position;
         musicManager.PlayMusic(musicManager.WinGameMusic);
+        winParticleSystem.Play();
         ShowWinMenu();
     }
 
