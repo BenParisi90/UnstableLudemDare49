@@ -44,9 +44,9 @@ public class GameManager : MonoBehaviour
     {
 
         highScore = Mathf.Max(highScore, horseDropper.maxHeightThisRound);
-        string highScoreString = highScore.ToString("f2");
-        string maxHeightString = horseDropper.maxHeightThisRound.ToString("f2");
-        heightText.text = "MAX HEIGHT " + maxHeightString + "\nHIGH SCORE " + highScoreString;
+        string highScoreString = metersToHands(highScore).ToString("f2");
+        string maxHeightString = metersToHands(horseDropper.maxHeightThisRound).ToString("f2");
+        heightText.text = "HANDS: " + maxHeightString + "\nHIGH SCORE: " + highScoreString;
     }
 
     public void StartGameClicked()
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
     {
         gameState = GameState.INTRO;
         introImage.SetActive(true);
-        introText.text = barnHeight.ToString() + "M";
+        introText.text = barnHeight.ToString() + "HANDS";
         introText.gameObject.SetActive(true);
         musicManager.PlayMusic(musicManager.IntroMusic);
         horseDropper.maxHeightThisRound = 0;
@@ -137,5 +137,10 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         button.SetActive(true);
+    }
+
+    float metersToHands(float meters)
+    {
+        return meters * .1016f;
     }
 }
